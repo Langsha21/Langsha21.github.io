@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="现在来分析下一个简单的c语言代码,使用GCC生成的二进制文件(嗯,没错,这不是win32程序,因为我手头没有MSVC…)GCC的选项是-ggdb,-O0 代码C代码 12345678910111213141516#include &lt;stdio.h&gt;long add(long a, long b)&#123;    long x &#x3D; a;    long y &#x3D; b;    return">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="现在来分析下一个简单的c语言代码,使用GCC生成的二进制文件(嗯,没错,这不是win32程序,因为我手头没有MSVC…)GCC的选项是-ggdb,-O0 代码C代码 12345678910111213141516#include &lt;stdio.h&gt;long add(long a, long b)&#123;    long x &#x3D; a;    long y &#x3D; b;    return">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-06-17T13:04:58.473Z">
+<meta property="article:modified_time" content="2024-06-15T15:03:01.376Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Hexo</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/06/17/Test/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%9F%BA%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">栈基设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">设置局部变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%8F%8A%E8%B0%83%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">add函数参数传递及调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%89%A7%E8%A1%8Cadd%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E6%A0%88%E5%B8%A7"><span class="toc-number">2.4.</span> <span class="toc-text">开始执行add函数&amp;生成栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%88%E5%B8%A7"><span class="toc-number">2.5.</span> <span class="toc-text">生成栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97"><span class="toc-number">2.6.</span> <span class="toc-text">运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4add%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7"><span class="toc-number">2.7.</span> <span class="toc-text">删除add函数栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD%E6%89%A7%E8%A1%8Cmain%E5%87%BD%E6%95%B0"><span class="toc-number">2.8.</span> <span class="toc-text">继续执行main函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8printf"><span class="toc-number">2.9.</span> <span class="toc-text">调用printf</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-17T13:04:58.473Z" class="dt-published" itemprop="datePublished">2024-06-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>现在来分析下一个简单的c语言代码,使用GCC生成的二进制文件<br>(嗯,没错,这不是win32程序,因为我手头没有MSVC…)<br>GCC的选项是<code>-ggdb</code>,<code>-O0</code></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>C代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">add</span><span class="params">(<span class="type">long</span> a, <span class="type">long</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> x = a;</span><br><span class="line">    <span class="type">long</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, add(a, b));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>汇编代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">.text:0000117D</span><br><span class="line">.text:0000117D ; =============== S U B R O U T I N E =======================================</span><br><span class="line">.text:0000117D</span><br><span class="line">.text:0000117D ; Attributes: bp-based frame</span><br><span class="line">.text:0000117D</span><br><span class="line">.text:0000117D ; int __cdecl Add(int a, int b)</span><br><span class="line">.text:0000117D                 public Add</span><br><span class="line">.text:0000117D Add             proc near               ; CODE XREF: main+31↓p</span><br><span class="line">.text:0000117D</span><br><span class="line">.text:0000117D x               = dword ptr -8</span><br><span class="line">.text:0000117D y               = dword ptr -4</span><br><span class="line">.text:0000117D a               = dword ptr  8</span><br><span class="line">.text:0000117D b               = dword ptr  0Ch</span><br><span class="line">.text:0000117D</span><br><span class="line">.text:0000117D ; __unwind &#123;</span><br><span class="line">.text:0000117D                 push    ebp</span><br><span class="line">.text:0000117E                 mov     ebp, esp</span><br><span class="line">.text:00001180                 sub     esp, 10h</span><br><span class="line">.text:00001183                 call    __x86_get_pc_thunk_ax</span><br><span class="line">.text:00001188                 add     eax, (offset _GLOBAL_OFFSET_TABLE_ - $)</span><br><span class="line">.text:0000118D                 mov     eax, [ebp+a]</span><br><span class="line">.text:00001190                 mov     [ebp+x], eax</span><br><span class="line">.text:00001193                 mov     eax, [ebp+b]</span><br><span class="line">.text:00001196                 mov     [ebp+y], eax</span><br><span class="line">.text:00001199                 mov     edx, [ebp+x]</span><br><span class="line">.text:0000119C                 mov     eax, [ebp+y]</span><br><span class="line">.text:0000119F                 add     eax, edx</span><br><span class="line">.text:000011A1                 leave</span><br><span class="line">.text:000011A2                 retn</span><br><span class="line">.text:000011A2 ; &#125; // starts at 117D</span><br><span class="line">.text:000011A2 Add             endp</span><br><span class="line">.text:000011A2</span><br><span class="line">.text:000011A3</span><br><span class="line">.text:000011A3 ; =============== S U B R O U T I N E =======================================</span><br><span class="line">.text:000011A3</span><br><span class="line">.text:000011A3 ; Attributes: bp-based frame fuzzy-sp</span><br><span class="line">.text:000011A3</span><br><span class="line">.text:000011A3 ; int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">.text:000011A3                 public main</span><br><span class="line">.text:000011A3 main            proc near               ; DATA XREF: .got:main_ptr↓o</span><br><span class="line">.text:000011A3</span><br><span class="line">.text:000011A3 a               = dword ptr -10h</span><br><span class="line">.text:000011A3 b               = dword ptr -0Ch</span><br><span class="line">.text:000011A3 argc            = dword ptr  8</span><br><span class="line">.text:000011A3 argv            = dword ptr  0Ch</span><br><span class="line">.text:000011A3 envp            = dword ptr  10h</span><br><span class="line">.text:000011A3</span><br><span class="line">.text:000011A3 ; __unwind &#123;</span><br><span class="line">.text:000011A3                 lea     ecx, [esp+4]</span><br><span class="line">.text:000011A7                 and     esp, 0FFFFFFF0h</span><br><span class="line">.text:000011AA                 push    dword ptr [ecx-4]</span><br><span class="line">.text:000011AD                 push    ebp</span><br><span class="line">.text:000011AE                 mov     ebp, esp</span><br><span class="line">.text:000011B0                 push    ebx</span><br><span class="line">.text:000011B1                 push    ecx</span><br><span class="line">.text:000011B2                 sub     esp, 10h</span><br><span class="line">.text:000011B5                 call    __x86_get_pc_thunk_bx</span><br><span class="line">.text:000011BA                 add     ebx, (offset _GLOBAL_OFFSET_TABLE_ - $)</span><br><span class="line">.text:000011C0                 mov     [ebp+a], 1</span><br><span class="line">.text:000011C7                 mov     [ebp+b], 2</span><br><span class="line">.text:000011CE                 push    [ebp+b]         ; b</span><br><span class="line">.text:000011D1                 push    [ebp+a]         ; a</span><br><span class="line">.text:000011D4                 call    Add</span><br><span class="line">.text:000011D9                 add     esp, 8</span><br><span class="line">.text:000011DC                 sub     esp, 8</span><br><span class="line">.text:000011DF                 push    eax</span><br><span class="line">.text:000011E0                 lea     eax, (aD - 3FF4h)[ebx] ; &quot;%d\n&quot;</span><br><span class="line">.text:000011E6                 push    eax             ; format</span><br><span class="line">.text:000011E7                 call    _printf</span><br><span class="line">.text:000011EC                 add     esp, 10h</span><br><span class="line">.text:000011EF                 mov     eax, 0</span><br><span class="line">.text:000011F4                 lea     esp, [ebp-8]</span><br><span class="line">.text:000011F7                 pop     ecx</span><br><span class="line">.text:000011F8                 pop     ebx</span><br><span class="line">.text:000011F9                 pop     ebp</span><br><span class="line">.text:000011FA                 lea     esp, [ecx-4]</span><br><span class="line">.text:000011FD                 retn</span><br><span class="line">.text:000011FD ; &#125; // starts at 11A3</span><br><span class="line">.text:000011FD main            endp</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先先分析main函数的汇编代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">; Attributes: bp-based frame fuzzy-sp</span><br><span class="line"></span><br><span class="line">; int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">public main</span><br><span class="line">main proc near</span><br><span class="line"></span><br><span class="line">a= dword ptr -10h</span><br><span class="line">b= dword ptr -0Ch</span><br><span class="line">argc= dword ptr  8</span><br><span class="line">argv= dword ptr  0Ch</span><br><span class="line">envp= dword ptr  10h</span><br><span class="line"></span><br><span class="line">; __unwind &#123; // 56555000</span><br><span class="line">lea     ecx, [esp+4]    ; Load Effective Address</span><br><span class="line">and     esp, 0FFFFFFF0h ; Logical AND</span><br><span class="line">push    dword ptr [ecx-4]</span><br><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">push    ebx</span><br><span class="line">push    ecx</span><br><span class="line">sub     esp, 10h        ; Integer Subtraction</span><br><span class="line">call    __x86_get_pc_thunk_bx ; Call Procedure</span><br><span class="line">add     ebx, (offset _GLOBAL_OFFSET_TABLE_ - $) ; Add</span><br><span class="line">mov     [ebp+a], 1</span><br><span class="line">mov     [ebp+b], 2</span><br><span class="line">push    [ebp+b]         ; b</span><br><span class="line">push    [ebp+a]         ; a</span><br><span class="line">call    Add             ; Call Procedure</span><br><span class="line">add     esp, 8          ; Add</span><br><span class="line">sub     esp, 8          ; Integer Subtraction</span><br><span class="line">push    eax</span><br><span class="line">lea     eax, (aD - 56558FF4h)[ebx] ; Load Effective Address</span><br><span class="line">push    eax             ; format</span><br><span class="line">call    _printf         ; Call Procedure</span><br><span class="line">add     esp, 10h        ; Add</span><br><span class="line">mov     eax, 0</span><br><span class="line">lea     esp, [ebp-8]    ; Load Effective Address</span><br><span class="line">pop     ecx</span><br><span class="line">pop     ebx</span><br><span class="line">pop     ebp</span><br><span class="line">lea     esp, [ecx-4]    ; Load Effective Address</span><br><span class="line">retn                    ; Return Near from Procedure</span><br><span class="line">; &#125; // starts at 565561A3</span><br><span class="line">main endp</span><br></pre></td></tr></table></figure>
+<p>前三行代码主要做了栈的初始化操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lea     ecx, [esp+4]    ; Load Effective Address</span><br></pre></td></tr></table></figure>
+<p>lea(Load Effective Address)是一个二元指令,计算代码的有效地址,并且将值传给ECX(因为这个程序开启了地址随机化)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and esp, 0FFFFFFF0h</span><br></pre></td></tr></table></figure>
+<p>将ESP寄存器与0x0FFFFFFF0进行AND运算,以达到将ESP按十六进制对齐的效果(栈对齐)<br>例如,执行该AND命令前ESP寄存器的值为<code>0xFFFFCB1C</code>,执行后为<code>0xFFFFCB10</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push    dword ptr [ecx-4]</span><br></pre></td></tr></table></figure>
+<p>ESP-4,之后将ECX-4的地址压入栈中</p>
+<h4 id="栈基设置"><a href="#栈基设置" class="headerlink" title="栈基设置"></a>栈基设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push    ebp</span><br></pre></td></tr></table></figure>
+<p>ESP-4,然后将上一个函数栈底的地址(EBP值)压入栈中,在当前栈基备份上一个栈基的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov     ebp, esp</span><br></pre></td></tr></table></figure>
+<p>将ESP的值传给EBP寄存器,也即让EBP指向目前的栈基</p>
+<h4 id="设置局部变量"><a href="#设置局部变量" class="headerlink" title="设置局部变量"></a>设置局部变量</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>上述代码将为这两个变量值开辟空间,并且初始化</p>
+<p>在汇编中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sub     esp, 10h</span><br></pre></td></tr></table></figure>
+<p>将ESP的值减10,也就是在栈中开辟0x10字节大小的空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call    __x86_get_pc_thunk_bx ; Call Procedure</span><br></pre></td></tr></table></figure>
+<p>这段可能有点迷惑,其实是一个可调用的函数,其汇编代码为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov     eax, [esp+0]</span><br><span class="line">retn</span><br></pre></td></tr></table></figure>
+<p>调用这个函数的时候,ESP寄存器指向当前调用该函数的位置,并且把ESP指向的地址传给EAX.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ebx, (offset _GLOBAL_OFFSET_TABLE_ - $)</span><br></pre></td></tr></table></figure>
+<p>将EBX寄存器指向<code>GOT表-$</code>的位置,其中的<code>$</code>为当前的add指令地址</p>
+<h4 id="add函数参数传递及调用"><a href="#add函数参数传递及调用" class="headerlink" title="add函数参数传递及调用"></a>add函数参数传递及调用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov     [ebp+a], 1</span><br><span class="line">mov     [ebp+b], 2</span><br><span class="line">push    [ebp+b]         ; b= dword ptr -0Ch</span><br><span class="line">push    [ebp+a]         ; a= dword ptr -10h</span><br><span class="line">call    Add             ; Call Procedure</span><br></pre></td></tr></table></figure>
+<p>将EBP+a&#x2F;+b的位置(位于main函数栈中)的值分别赋值为1,2并且压入当前函数栈中<br>这里的a和b其实是负的,所以是往上(小于main栈帧)的地址</p>
+<p>注意到参数的入栈顺序是<code>b a</code>,而非我们在调用add函数时的<code>a b</code>,是反向顺序的,这也被称为<strong>逆向存储</strong></p>
+<p>最后就是调用add函数了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call    Add             ; Call Procedure</span><br></pre></td></tr></table></figure>
+<p>执行CALL指令的时候,CPU会将函数的返回地址压入栈中,返回地址即CALL指令的下一个指令的地址,此处为000011D9,然后开始执行add函数的指令</p>
+<p>此时add函数栈(待定)为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------+   </span><br><span class="line">| add EBP |                   </span><br><span class="line">+---------+                   </span><br><span class="line">|  RETURN |&lt;--------- 000011D9</span><br><span class="line">+---------+                   </span><br><span class="line">|    a    |&lt;--------- 1       </span><br><span class="line">+---------+                   </span><br><span class="line">|    b    |&lt;--------- 2       </span><br><span class="line">+---------+                   </span><br></pre></td></tr></table></figure>
+
+<h4 id="开始执行add函数-生成栈帧"><a href="#开始执行add函数-生成栈帧" class="headerlink" title="开始执行add函数&amp;生成栈帧"></a>开始执行add函数&amp;生成栈帧</h4><p>add函数汇编代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">; Attributes: bp-based frame</span><br><span class="line"></span><br><span class="line">; int __cdecl Add(int a, int b)</span><br><span class="line">public Add</span><br><span class="line">Add proc near</span><br><span class="line"></span><br><span class="line">x= dword ptr -8</span><br><span class="line">y= dword ptr -4</span><br><span class="line">a= dword ptr  8</span><br><span class="line">b= dword ptr  0Ch</span><br><span class="line"></span><br><span class="line">; __unwind &#123; // 56555000</span><br><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">sub     esp, 10h        ; Integer Subtraction</span><br><span class="line">call    __x86_get_pc_thunk_ax ; Call Procedure</span><br><span class="line">add     eax, (offset _GLOBAL_OFFSET_TABLE_ - $) ; Add</span><br><span class="line">mov     eax, [ebp+a]</span><br><span class="line">mov     [ebp+x], eax</span><br><span class="line">mov     eax, [ebp+b]</span><br><span class="line">mov     [ebp+y], eax</span><br><span class="line">mov     edx, [ebp+x]</span><br><span class="line">mov     eax, [ebp+y]</span><br><span class="line">add     eax, edx        ; Add</span><br><span class="line">leave                   ; High Level Procedure Exit</span><br><span class="line">retn                    ; Return Near from Procedure</span><br><span class="line">; &#125; // starts at 5655617D</span><br><span class="line">Add endp</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成栈帧"><a href="#生成栈帧" class="headerlink" title="生成栈帧"></a>生成栈帧</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">sub     esp, 10h        ; Integer Subtraction</span><br></pre></td></tr></table></figure>
+<p>这两句用于生成栈帧,首先ESP-4,将EBP(此时还指向main栈帧)的地址写进ESP指向的地址,然后将ESP指向的地址传给EBP,即EBP指向add函数栈帧的栈基,并且开辟了变量空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov     eax, [ebp+a]</span><br><span class="line">mov     [ebp+x], eax</span><br><span class="line">mov     eax, [ebp+b]</span><br><span class="line">mov     [ebp+y], eax</span><br></pre></td></tr></table></figure>
+<p>EAX作为中介,将变量x,y初始化,其初始化的值分别来自传入的参数a,b.</p>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov     edx, [ebp+x]</span><br><span class="line">mov     eax, [ebp+y]</span><br><span class="line">add     eax, edx        ; Add</span><br></pre></td></tr></table></figure>
+<p>将x,y的值分别传给EDX,EAX,然后将EDX的值加上EAX的值传给EAX.</p>
+<h4 id="删除add函数栈帧"><a href="#删除add函数栈帧" class="headerlink" title="删除add函数栈帧"></a>删除add函数栈帧</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leave                   ; High Level Procedure Exit</span><br><span class="line">retn                    ; Return Near from Procedure</span><br></pre></td></tr></table></figure>
+<p>leave指令用于处理栈帧,相当于以下的两条指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ESP,EBP</span><br><span class="line">pop EBP</span><br></pre></td></tr></table></figure>
+<p>将EBP所指的地址传给ESP,让ESP指向EBP同样指向的地址</p>
+<p>pop指令用于将ESP所指的地址的数据传给操作数,在这里我们的操作数是EBP,也就是把上一个函数(main函数)的栈帧地址传给EBP,让其指向main函数栈帧,然后ESP+4<br>再执行retn,retn相当于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop EIP</span><br></pre></td></tr></table></figure>
+<p>因为之前在栈基下边存储着main函数中,调用add函数后的下一条指令的地址,那么将返回地址传给EIP寄存器,继续执行main函数</p>
+<p>到了这里add函数就彻底执行完毕了</p>
+<h4 id="继续执行main函数"><a href="#继续执行main函数" class="headerlink" title="继续执行main函数"></a>继续执行main函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add     esp, 8          ; Add</span><br><span class="line">sub     esp, 8          ; Integer Subtraction</span><br></pre></td></tr></table></figure>
+<p>add指令将ESP的值+8,为的是将传给add函数的参数清理<br><em>Notice:这里是由调用函数者(caller),也即main函数,来清理栈中的函数参数的,这种函数调用约定方式被称为cdecl</em><br>sub指令又将这两个参数(也即main函数的变量a,b)恢复,可能是GCC优化的原因.</p>
+<h4 id="调用printf"><a href="#调用printf" class="headerlink" title="调用printf"></a>调用printf</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">push    eax</span><br><span class="line">lea     eax, (aD - 56558FF4h)[ebx] ; &quot;%d\n&quot;</span><br><span class="line">push    eax             ; format</span><br><span class="line">call    _printf         ; Call Procedure</span><br></pre></td></tr></table></figure>
+<p>将EAX的值(add函数的返回值)传给ESP当前指向的位置,ESP-4再将<code>&quot;%d\n&quot;</code>的有效地址计算,传给EAX,将<code>&quot;%d\n&quot;</code>传给ESP当前指向的位置,ESP再次-4<br>这样就提供了printf函数的参数,然后调用printf函数</p>
+<p>最后main函数执行完毕,返回值为0,删除main函数栈帧.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%9F%BA%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">栈基设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">设置局部变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%8F%8A%E8%B0%83%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">add函数参数传递及调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%89%A7%E8%A1%8Cadd%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E6%A0%88%E5%B8%A7"><span class="toc-number">2.4.</span> <span class="toc-text">开始执行add函数&amp;生成栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%88%E5%B8%A7"><span class="toc-number">2.5.</span> <span class="toc-text">生成栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97"><span class="toc-number">2.6.</span> <span class="toc-text">运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4add%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7"><span class="toc-number">2.7.</span> <span class="toc-text">删除add函数栈帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD%E6%89%A7%E8%A1%8Cmain%E5%87%BD%E6%95%B0"><span class="toc-number">2.8.</span> <span class="toc-text">继续执行main函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8printf"><span class="toc-number">2.9.</span> <span class="toc-text">调用printf</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/06/17/7%20%E6%A0%88%E5%B8%A7/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
