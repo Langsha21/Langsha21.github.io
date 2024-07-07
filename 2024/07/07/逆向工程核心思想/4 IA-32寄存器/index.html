@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Lansha&#96;s Blog">
 <meta property="og:description" content="通用寄存器 需要记住的主要是8个寄存器: 1. EAX:(针对操作数和结果数据的)累加器,返回值存储 2. EBX:(DS段中的数据指针)基址寄存器 3. ECX:(字符串和循环操作的)计数器 4. EDX:(I&#x2F;O指针)数据寄存器 5. EBP:(SS段中栈内数据指针)基址指针寄存器 6. ESI:(字符串操作源指针)原变址寄存器 7. EDI:(字符串操作目标指针)目的变址寄存器 8. ESP">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-07-07T08:27:25.587Z">
+<meta property="article:published_time" content="2024-07-07T08:32:27.644Z">
 <meta property="article:modified_time" content="2024-06-17T14:29:24.620Z">
 <meta property="article:author" content="Lansha">
 <meta property="article:tag" content="逆向工程核心原理">
@@ -531,7 +531,7 @@ Flag,状态标志,第11比特位,当有符号整数溢出时,置1,或者MSB(最�
         <div class="license-wrapper">
             <p>原文作者：<a href="http://example.com">Lansha</a>
             <p>原文链接：<a href="http://example.com/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">http://example.com/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/</a>
-            <p>发表日期：<a href="http://example.com/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">July 7th 2024, 4:27:25 pm</a>
+            <p>发表日期：<a href="http://example.com/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">July 7th 2024, 4:32:27 pm</a>
             <p>更新日期：<a href="http://example.com/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">June 17th 2024, 10:29:24 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
@@ -541,16 +541,16 @@ Flag,状态标志,第11比特位,当有符号整数溢出时,置1,或者MSB(最�
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/" title="逆向工程核心原理笔记 第8章 abex ` crackme 2">
-                    <div class="nextTitle">逆向工程核心原理笔记 第8章 abex ` crackme 2</div>
+                <a href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/10%20%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/" title="逆向工程核心原理笔记 第10章 函数调用约定">
+                    <div class="nextTitle">逆向工程核心原理笔记 第10章 函数调用约定</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/6%20abex%20%60%20crackme1/" title="逆向工程核心原理笔记 第6章 abex ` crackme1">
-                    <div class="prevTitle">逆向工程核心原理笔记 第6章 abex ` crackme1</div>
+                <a href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/7%20%E6%A0%88%E5%B8%A7/" title="逆向工程核心原理笔记 第7章 栈帧">
+                    <div class="prevTitle">逆向工程核心原理笔记 第7章 栈帧</div>
                 </a>
             
         </li>
@@ -745,14 +745,6 @@ Flag,状态标志,第11比特位,当有符号整数溢出时,置1,或者MSB(最�
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
     
     
     
@@ -770,43 +762,88 @@ Flag,状态标志,第11比特位,当有符号整数溢出时,置1,或者MSB(最�
         
             
             
-            <div class="archive-year"> 2024 </div>
+            <div class="archive-year"> Invalid date </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
+            <span class="archive-post-date">Invalid date</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/10%20%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/">逆向工程核心原理笔记 第10章 函数调用约定</a>
         </li>
     
         
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
         <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
+            <span class="archive-post-date">Invalid date</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/13%20PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">逆向工程核心原理笔记 第13章 PE文件格式</a>
         </li>
     
         
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
-            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/7%20%E6%A0%88%E5%B8%A7/">逆向工程核心原理笔记 第7章 栈帧</a>
-        </li>
-    
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
         
         <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
-            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">逆向工程核心原理笔记 第8章 abex ` crackme 2</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
+            <span class="archive-post-date">Invalid date</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">逆向工程核心原理笔记 第4章 IA-32寄存器</a>
         </li>
     
         
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
         <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
+            <span class="archive-post-date">Invalid date</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/6%20abex%20%60%20crackme1/">逆向工程核心原理笔记 第6章 abex ` crackme1</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/7%20%E6%A0%88%E5%B8%A7/">逆向工程核心原理笔记 第7章 栈帧</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">逆向工程核心原理笔记 第8章 abex ` crackme 2</a>
         </li>
     
     </div>
