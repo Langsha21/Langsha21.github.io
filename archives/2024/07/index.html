@@ -429,52 +429,6 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/10%20%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/">
-                
-                <span class="abstract-title-text">逆向工程核心原理笔记 第10章 函数调用约定</span>
-            </a>
-            <div class="abstract-content">
-                函数调用约定(Calling
-Convention)是函数调用时如何传递参数的一种约定
-函数调用约定有两种:cdecl和stdcall
-cdecl
-cdecl是主要在C语言中使用的方式,由调用者(caller)处理栈
-stdcall
-stdcall则常用于Win32 API,由被调用者(callee)清理栈
-fastcall
-fastcall和stdcall相似,但是使用了寄存器去传递参数,将会依次使用ECX,EDX传递前两个参数.
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/06/18">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
             <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/13%20PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
                 
                 <span class="abstract-title-text">逆向工程核心原理笔记 第13章 PE文件格式</span>
@@ -543,20 +497,21 @@ FileAlignment
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">
+            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/10%20%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/">
                 
-                <span class="abstract-title-text">逆向工程核心原理笔记 第8章 abex ` crackme 2</span>
+                <span class="abstract-title-text">逆向工程核心原理笔记 第10章 函数调用约定</span>
             </a>
             <div class="abstract-content">
-                打开程序,需要输入Name 和 Serial,很明显我们什么都不知道()
-打开DIE,检测发现这是一个Visual Basic 的程序,并且是Native代码
-VB程序特征
-VB的程序使用名为MSVBVM60.dll的VB专用引擎
-VB的程序要调用一个函数的时候,事实上是调用MSVBVM60.dll的函数,然后根据在MSVBVM60.dll中的实现再次调用其他动态链接库(或者Win32
-API)来工作
-VB可以被编译为本地代码(N code)或伪代码(P
-code),伪代码是解释器语言,如果我们要分析VB的伪代码,就必须分析VB引擎.
-VB本身采用的是Windows操作系统的事件驱动方式...
+                函数调用约定(Calling
+Convention)是函数调用时如何传递参数的一种约定
+函数调用约定有两种:cdecl和stdcall
+cdecl
+cdecl是主要在C语言中使用的方式,由调用者(caller)处理栈
+stdcall
+stdcall则常用于Win32 API,由被调用者(callee)清理栈
+fastcall
+fastcall和stdcall相似,但是使用了寄存器去传递参数,将会依次使用ECX,EDX传递前两个参数.
+
             </div>
             <!-- read more -->
             
@@ -653,6 +608,51 @@ GCC的选项是-ggdb,-O0 ### 代码 C代码
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2024/06/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">
+                
+                <span class="abstract-title-text">逆向工程核心原理笔记 第8章 abex ` crackme 2</span>
+            </a>
+            <div class="abstract-content">
+                打开程序,需要输入Name 和 Serial,很明显我们什么都不知道()
+打开DIE,检测发现这是一个Visual Basic 的程序,并且是Native代码
+VB程序特征
+VB的程序使用名为MSVBVM60.dll的VB专用引擎
+VB的程序要调用一个函数的时候,事实上是调用MSVBVM60.dll的函数,然后根据在MSVBVM60.dll中的实现再次调用其他动态链接库(或者Win32
+API)来工作
+VB可以被编译为本地代码(N code)或伪代码(P
+code),伪代码是解释器语言,如果我们要分析VB的伪代码,就必须分析VB引擎.
+VB本身采用的是Windows操作系统的事件驱动方式...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/06/18">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
                 </div>
                 <!-- tags -->
@@ -854,10 +854,6 @@ GCC的选项是-ggdb,-O0 ### 代码 C代码
         
         
         
-        
-        
-        
-        
     
     
     
@@ -893,12 +889,6 @@ GCC的选项是-ggdb,-O0 ### 代码 C代码
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/07</span>
-            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">逆向工程核心原理笔记 第8章 abex ` crackme 2</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/4%20IA-32%E5%AF%84%E5%AD%98%E5%99%A8/">逆向工程核心原理笔记 第4章 IA-32寄存器</a>
         </li>
     
@@ -912,6 +902,12 @@ GCC的选项是-ggdb,-O0 ### 代码 C代码
         <li class="archive-post-item">
             <span class="archive-post-date">07/07</span>
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/7%20%E6%A0%88%E5%B8%A7/">逆向工程核心原理笔记 第7章 栈帧</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/07</span>
+            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">逆向工程核心原理笔记 第8章 abex ` crackme 2</a>
         </li>
     
     </div>
