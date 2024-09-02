@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Lansha&#96;s Blog">
-<meta property="og:url" content="http://example.com/tags/PE/index.html">
+<meta property="og:url" content="http://example.com/archives/2024/page/2/index.html">
 <meta property="og:site_name" content="Lansha&#96;s Blog">
 <meta property="og:locale">
 <meta property="article:author" content="Lansha">
@@ -429,137 +429,21 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2024/07/19/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/15%20%E8%B0%83%E8%AF%95UPX%E5%8E%8B%E7%BC%A9%E7%9A%84%E7%A8%8B%E5%BA%8F/">
+            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/7%20%E6%A0%88%E5%B8%A7/">
                 
-                <span class="abstract-title-text">逆向工程核心原理笔记 第14章 运行时压缩</span>
+                <span class="abstract-title-text">逆向工程核心原理笔记 第7章 栈帧</span>
             </a>
             <div class="abstract-content">
-                这次用的是32位的7zFM.exe文件，因为手上的notepad.exe似乎没法加壳
-7zFM.exe的EP代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849.text:0045F738                 public start.text:0045F738 start           proc near               ; DATA XREF: HEADER:00400138↑o.text:0045F738.text:004...
+                现在来分析下一个简单的c语言代码,使用GCC生成的二进制文件
+(嗯,没错,这不是win32程序,因为我手头没有MSVC...)
+GCC的选项是-ggdb,-O0 ### 代码 C代码
+12345678910111213141516#include &lt;stdio.h&gt;long add(long a, long b)&#123;    long x = a;    long y = b;    return x + y;&#125;int main()&#123;    long a = 1, b = 2;    printf(&quot;%d\n&quot;, add(a, b...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/07/19">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/19</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="PE">PE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2024/07/19/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/14%20%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8E%8B%E7%BC%A9/">
-                
-                <span class="abstract-title-text">逆向工程核心原理笔记 第14章 运行时压缩</span>
-            </a>
-            <div class="abstract-content">
-                运行时压缩器(Run-Time Packer)是软件逆向分析学的常见主题
-数据压缩
-所有存储在计算机中的数据都是由0和1组成的,使用合适的算法就可以将文件大小缩减.如果压缩后的文件能够完全恢复,则称为无损压缩.如果不能则称其为有损压缩.
-无损压缩
-无损压缩中的代表算法是以下三个: - Run-Length - Lempel-Ziv -
-Huffman
-有损压缩
-多媒体文件基本上都使用了有损压缩缩小文件大小,例如JPEG,MP3,MP4等.
-运行时压缩器
-运行时压缩器针对的是可执行文件而言的,可执行文件内部含有解压缩代码.
-和普通的压缩文件相比,运行时压缩文件的一个明显特点是"PE文件的可...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/07/19">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/19</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="PE">PE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/13%20PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
-                
-                <span class="abstract-title-text">逆向工程核心原理笔记 第13章 PE文件格式</span>
-            </a>
-            <div class="abstract-content">
-                
-介绍
-PE文件格式
-基本结构
-
-VA&amp;RVA
-
-PE头
-
-DOS头 IMAGE_DOS_HEADER
-DOS存根 stub
-NT头
-NT头:文件头
-IMAGE_FILE_HEADER
-
-1.Machine
-2.NumberOfSections
-3.SizeOfOptionalHeader
-4.Characteristic
-
-NT头:可选头
-IMAGE_OPTIONAL_HEADER
-
-1. Magic
-2. AddressOfEntryPoint
-3. ImageBase
-4. SectionAlignment,
-FileAlignment
-5. SizeOfImage
-6. ...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/07/07">
+                <div class="abstract-date" title="Last updated: 2024/06/17">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
                 </div>
                 <!-- tags -->
@@ -571,7 +455,89 @@ FileAlignment
     
         <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="PE">PE</a>
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">
+                
+                <span class="abstract-title-text">逆向工程核心原理笔记 第8章 abex ` crackme 2</span>
+            </a>
+            <div class="abstract-content">
+                打开程序,需要输入Name 和 Serial,很明显我们什么都不知道()
+打开DIE,检测发现这是一个Visual Basic 的程序,并且是Native代码
+VB程序特征
+VB的程序使用名为MSVBVM60.dll的VB专用引擎
+VB的程序要调用一个函数的时候,事实上是调用MSVBVM60.dll的函数,然后根据在MSVBVM60.dll中的实现再次调用其他动态链接库(或者Win32
+API)来工作
+VB可以被编译为本地代码(N code)或伪代码(P
+code),伪代码是解释器语言,如果我们要分析VB的伪代码,就必须分析VB引擎.
+VB本身采用的是Windows操作系统的事件驱动方式...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/06/18">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/6%20abex%20%60%20crackme1/">
+                
+                <span class="abstract-title-text">逆向工程核心原理笔记 第6章 abex ` crackme1</span>
+            </a>
+            <div class="abstract-content">
+                很简单的程序,首先会弹出 1Make me think your HD is a CD-Rom. (让我认为你的硬盘是CD-Rom)
+然后接着会弹出 1Nah... This is not a CD-ROM Drive!
+打开IDA,看汇编 首先会执行这段代码 12345678910push    0               ; uTypepush    offset Caption  ; &quot;abex&#x27; 1st crackme&quot;push    offset Text     ; &quot;Make me think your HD is a CD-Ro...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/06/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/07/07</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
     
 </div>
 
@@ -581,6 +547,10 @@ FileAlignment
         <div class="index-post-divider"></div>
     
     <!-- paginator  -->
+    
+        <nav class="page-nav">
+            <a class="extend prev" rel="prev" href="/archives/2024/">&lt; PREV</a><a class="page-number" href="/archives/2024/">1</a><span class="page-number current">2</span>
+        </nav>
     
 </main>
 
