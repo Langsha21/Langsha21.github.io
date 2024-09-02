@@ -19,28 +19,27 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="UPack是dwing大神写的PE压缩器(最晚的版本发布于05年,在看雪论坛发布的,算是相当久远了).其对PE头的变形相当精彩,PE头如同麻花一般,最开始能让一堆PE实用程序崩溃.不过这个壳只能压缩32位程序 比较PE文件头 我们现在使用DiskInfo32S,用upack压缩后进行比对.使用imhex打开upack压缩前后的文件 源文件:  加了UPack壳后的文件:  Imhex的模式分析自然">
+    <meta name="description" content="老实说这个CrackMe很简单,但是第一次逆向Delphi,人傻了. 先看看exe本身,拿die查了一下,是Delphi的程序. 进入程序,直接就是三个按钮  中间很好理解,退出嘛,左边是一个根据Name来推序列码(猜测),右边是检测序列码. 然而我完全不了解Delphi是怎么回事,找了半天main函数也找不到.IDA动调暂停在弹出的错误提示框后也跳不出Win32API的函数循环. 然后去网上查了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逆向工程核心原理笔记 第18章 UPack PE文件头分析">
-<meta property="og:url" content="http://example.com/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="CrackMe笔记--Acid_burn">
+<meta property="og:url" content="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/index.html">
 <meta property="og:site_name" content="Lansha&#96;s Blog">
-<meta property="og:description" content="UPack是dwing大神写的PE压缩器(最晚的版本发布于05年,在看雪论坛发布的,算是相当久远了).其对PE头的变形相当精彩,PE头如同麻花一般,最开始能让一堆PE实用程序崩溃.不过这个壳只能压缩32位程序 比较PE文件头 我们现在使用DiskInfo32S,用upack压缩后进行比对.使用imhex打开upack压缩前后的文件 源文件:  加了UPack壳后的文件:  Imhex的模式分析自然">
+<meta property="og:description" content="老实说这个CrackMe很简单,但是第一次逆向Delphi,人傻了. 先看看exe本身,拿die查了一下,是Delphi的程序. 进入程序,直接就是三个按钮  中间很好理解,退出嘛,左边是一个根据Name来推序列码(猜测),右边是检测序列码. 然而我完全不了解Delphi是怎么回事,找了半天main函数也找不到.IDA动调暂停在弹出的错误提示框后也跳不出Win32API的函数循环. 然后去网上查了">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2024/08/15/image/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/1.png">
-<meta property="og:image" content="http://example.com/2024/08/15/image/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/2.png">
-<meta property="og:image" content="http://example.com/2024/08/15/image/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/3.png">
-<meta property="article:published_time" content="2024-08-14T21:30:25.117Z">
-<meta property="article:modified_time" content="2024-09-02T05:51:28.648Z">
+<meta property="og:image" content="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/1.png">
+<meta property="og:image" content="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/2.png">
+<meta property="article:published_time" content="2024-08-27T10:18:13.068Z">
+<meta property="article:modified_time" content="2024-09-02T06:31:53.401Z">
 <meta property="article:author" content="Lansha">
-<meta property="article:tag" content="逆向工程核心原理">
-<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="CrackMe">
+<meta property="article:tag" content="Delphi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/08/15/image/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/1.png">
+<meta name="twitter:image" content="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/1.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>逆向工程核心原理笔记 第18章 UPack PE文件头分析 · Lansha&#39;s Blog</title>
+    <title>CrackMe笔记--Acid_burn · Lansha&#39;s Blog</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -266,7 +265,7 @@
                 <a href="/">Lansha&#39;s Blog</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">逆向工程核心原理笔记 第18章 UPack PE文件头分析</a>
+                <a href="#" class="post-name">CrackMe笔记--Acid_burn</a>
             </div>
         </div>
     
@@ -312,7 +311,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                逆向工程核心原理笔记 第18章 UPack PE文件头分析
+                CrackMe笔记--Acid_burn
             <!-- 404 -->
             
         </h1>
@@ -332,9 +331,9 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向工程核心原理">逆向工程核心原理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="CrackMe">CrackMe</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="逆向">逆向</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Delphi">Delphi</a>
     
 </div>
 
@@ -344,7 +343,7 @@
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2024/08/15</span>
+                    <span class="post-intro-time">2024/08/27</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -499,41 +498,30 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>UPack是dwing大神写的PE压缩器(最晚的版本发布于05年,在看雪论坛发布的,算是相当久远了).其对PE头的变形相当精彩,PE头如同麻花一般,最开始能让一堆PE实用程序崩溃.不过这个壳只能压缩32位程序</p>
-<h3 id="比较pe文件头">比较PE文件头</h3>
-<p>我们现在使用DiskInfo32S,用upack压缩后进行比对.使用imhex打开upack压缩前后的文件</p>
-<p>源文件:</p>
-<p><img src="../../image/逆向工程核心思想/18/1.png" /></p>
-<p>加了UPack壳后的文件:</p>
-<p><img src="../../image/逆向工程核心思想/18/2.png" /></p>
-<p>Imhex的模式分析自然无法解析<code>DiskInfo32S_upack</code>文件,而且可以看到本该是DOS头部分的地方塞上了DLL名称和函数名称以及作者的署名.而且PE签名和DOS头的距离很小.</p>
-<h3 id="分析upack的pe文件头">分析UPack的PE文件头</h3>
-<p>那么现在使用DIE分析<code>DiskInfo32S_upack</code>文件.</p>
-<p>在DOS头中只有两个重要的成员:<code>e_magic</code>和<code>e_lfanew</code>.前者为DOS头签名,后者为NT头的起始位置.其他成员对于程序运行没有影响.</p>
-<p><code>e_lfanew</code>的值在一般的PE文件中的计算为:<code>e_lfanew=MZ文件头大小(40) + DOS_Stub大小(可变)</code></p>
-<p>不过在PE文件协议中,<code>IMAGE_NT_HEADERS</code>的起始位置是可以变化的.这是由<code>e_lfanew</code>决定的.也就是说DOS头能和NT头重叠在一起.在<code>DiskInfo32S_upack</code>文件中<code>e_lfanew</code>的值为<code>0x40</code>.在UPack中<code>e_lfanew</code>减掉了<code>DOS_Stub</code>和侵占了一些DOS头的空间(不过在这个例子里没有对<code>DOS_HEADER</code>做动作,估计是写入了署名空间变大导致的hhh)</p>
-<h3
-id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHeader</h3>
-<p><code>SizeOfOptionalHeader</code>表示PE文件头中在<code>IMAGE_FILE_HEADER</code>下的<code>IMAGE_OPTIOONAL_HEADER</code>结构体的长度.这个值大多数PE文件是<code>E0</code>.
-但是在<code>DiskInfo32S_upack</code>这个例子里<code>SizeOfOptionalHeader</code>是<code>148</code></p>
-<p>因为事实上<code>IMAGE_OPTIONAL_HEADER</code>的种类其实有很多,并非是固定的<code>E0</code>(例如64位的<code>IMAGE_OPTIONAL_HEADER</code>就是<code>F0</code>).</p>
-<p><code>SizeOfOptionalHeader</code>的另一个含义是用来确定节区头(<code>IAMGE_SECTION_HEADER</code>)的位置.<code>IAMGE_SECTION_HEADER</code>的地址可由<code>IMAGE_OPTIONAL_HEADER</code>的偏移和加上<code>SizeOfOptionalHeader</code>而计算出来.</p>
-<p>而Upack扩大<code>SizeOfOptionalHeader</code>后就可以在原来的<code>IMAGE_OPTIONAL_HEADER</code>和<code>IAMGE_SECTION_HEADER</code>间留出空隙,用于插入额外的解码代码.</p>
-<h3 id="image_section_header">IMAGE_SECTION_HEADER</h3>
-<p>在这次示例里面有着三个节区</p>
-<p><img src="../../image/逆向工程核心思想/18/3.png" /></p>
-<h3 id="重叠节区">重叠节区</h3>
-<p>可以看到第一个节区和第三个节区的<code>File Offset</code>(<code>File Offset</code>的地址<code>0x10</code>是文件头)和<code>Size</code>是一样的,也就是说UPack将两个节区叠在了一起.不过其<code>Virtual Size</code>和<code>RVA</code>则是不一样的.根据PE规范是没有问题的.</p>
-<p>还可以看到在文件中第二个节区的文件尺寸很大,可以判断出第二个节区存储了压缩后的源文件.第一个节区的<code>Virtual Size</code>则很大,文件尺寸则很小,故而可以判断执行PE文件后将会把第二个节区的内容解压缩到第一个节区内</p>
+        <p>老实说这个CrackMe很简单,但是第一次逆向Delphi,人傻了.</p>
+<p>先看看exe本身,拿die查了一下,是Delphi的程序.</p>
+<p>进入程序,直接就是三个按钮 <img src="1.png" />
+中间很好理解,退出嘛,左边是一个根据Name来推序列码(猜测),右边是检测序列码.</p>
+<p>然而我完全不了解Delphi是怎么回事,找了半天main函数也找不到.IDA动调暂停在弹出的错误提示框后也跳不出Win32API的函数循环.</p>
+<p>然后去网上查了资料才知道Delphi其实主要是以窗口为主的.而且附带着处理窗口事件的函数</p>
+<p>那么这个时候就该上点工具了,我选择用DaDa,很容易就能找到总共有三个窗口,以及他们对应的处理按钮的函数.</p>
+<p>那么先去看看处理Name/Serial的窗口检测函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __usercall TNS_BitBtn1Click@&lt;eax&gt;(<span class="type">int</span> a1@&lt;eax&gt;, <span class="type">int</span> a2@&lt;ebx&gt;, <span class="type">int</span> a3@&lt;esi&gt;)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> v4; <span class="comment">// esi</span></span><br><span class="line">  <span class="type">int</span> v5; <span class="comment">// esi</span></span><br><span class="line">  <span class="type">int</span> v6; <span class="comment">// ecx</span></span><br><span class="line">  <span class="type">char</span> v7; <span class="comment">// zf</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> v9[<span class="number">2</span>]; <span class="comment">// [esp-14h] [ebp-2Ch] BYREF</span></span><br><span class="line">  <span class="type">int</span> *v10; <span class="comment">// [esp-Ch] [ebp-24h]</span></span><br><span class="line">  <span class="type">int</span> v11; <span class="comment">// [esp-8h] [ebp-20h]</span></span><br><span class="line">  <span class="type">int</span> v12; <span class="comment">// [esp-4h] [ebp-1Ch]</span></span><br><span class="line">  <span class="type">int</span> v13; <span class="comment">// [esp+0h] [ebp-18h] BYREF</span></span><br><span class="line">  <span class="type">char</span> *v14; <span class="comment">// [esp+4h] [ebp-14h] BYREF</span></span><br><span class="line">  <span class="type">char</span> *v15; <span class="comment">// [esp+8h] [ebp-10h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v16; <span class="comment">// [esp+Ch] [ebp-Ch] BYREF</span></span><br><span class="line">  __int32 v17; <span class="comment">// [esp+10h] [ebp-8h] BYREF</span></span><br><span class="line">  __int32 v18; <span class="comment">// [esp+14h] [ebp-4h] BYREF</span></span><br><span class="line">  <span class="type">int</span> savedregs; <span class="comment">// [esp+18h] [ebp+0h] BYREF</span></span><br><span class="line"></span><br><span class="line">  v16 = <span class="number">0</span>;</span><br><span class="line">  v15 = <span class="number">0</span>;</span><br><span class="line">  v14 = <span class="number">0</span>;</span><br><span class="line">  v13 = <span class="number">0</span>;</span><br><span class="line">  v12 = a2;</span><br><span class="line">  v11 = a3;</span><br><span class="line">  v10 = &amp;savedregs;</span><br><span class="line">  v9[<span class="number">1</span>] = (<span class="type">unsigned</span> <span class="type">int</span>)&amp;loc_42FB67;</span><br><span class="line">  v9[<span class="number">0</span>] = __readfsdword(<span class="number">0</span>);</span><br><span class="line">  __writefsdword(<span class="number">0</span>, (<span class="type">unsigned</span> <span class="type">int</span>)v9);</span><br><span class="line">  dword_431750 = <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v15);</span><br><span class="line">  dword_43176C = System::__linkproc__ LStrToPChar(v15);</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v15);<span class="comment">// Name</span></span><br><span class="line">  v4 = <span class="number">7</span> * (<span class="type">unsigned</span> __int8)*v15;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v14);</span><br><span class="line">  dword_431754 = <span class="number">16</span> * (<span class="type">unsigned</span> __int8)v14[<span class="number">1</span>] + v4;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v15);</span><br><span class="line">  v5 = <span class="number">11</span> * (<span class="type">unsigned</span> __int8)v15[<span class="number">3</span>];</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v14);</span><br><span class="line">  dword_431758 = <span class="number">14</span> * (<span class="type">unsigned</span> __int8)v14[<span class="number">2</span>] + v5;</span><br><span class="line">  <span class="keyword">if</span> ( StrLen(dword_43176C) &lt; <span class="number">4</span> )               <span class="comment">// strlen(Name) &gt;= 4 </span></span><br><span class="line">    <span class="keyword">goto</span> LABEL_4;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">476</span>), &amp;v15);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  dword_431750 *= (<span class="type">unsigned</span> __int8)*v15;</span><br><span class="line">  dword_431750 *= <span class="number">2</span>;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrLAsg</span><span class="params">(&amp;v18, (__int32)&amp;str_CW[<span class="number">1</span>])</span>;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrLAsg</span><span class="params">(&amp;v17, (__int32)&amp;str_CRACKED[<span class="number">1</span>])</span>;</span><br><span class="line">  Sysutils::IntToStr(dword_431750);</span><br><span class="line">  __linkproc__ <span class="title function_">LStrCatN</span><span class="params">(&amp;v16, <span class="number">5</span>, v6, &amp;unknown_libname_243[<span class="number">1</span>], v13, &amp;unknown_libname_243[<span class="number">1</span>], v17)</span>;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">0x1E0</span>), &amp;v15);</span><br><span class="line">  System::__linkproc__ <span class="title function_">LStrCmp</span><span class="params">(v16, (<span class="type">int</span> *)v15)</span>;</span><br><span class="line">  <span class="keyword">if</span> ( v7 )</span><br><span class="line">    TApplication::MessageBox(*off_430A48, <span class="string">&quot;Good job dude =)&quot;</span>, <span class="string">&quot;Congratz !!&quot;</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">LABEL_4:</span><br><span class="line">    TApplication::MessageBox(*off_430A48, <span class="string">&quot;Sorry , The serial is incorect !&quot;</span>, <span class="string">&quot;Try Again!&quot;</span>, <span class="number">0</span>);</span><br><span class="line">  __writefsdword(<span class="number">0</span>, v9[<span class="number">0</span>]);</span><br><span class="line">  v10 = (<span class="type">int</span> *)&amp;loc_42FB6E;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrClr</span><span class="params">(&amp;v13)</span>;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrArrayClr</span><span class="params">((<span class="type">int</span>)&amp;v14, <span class="number">2</span>)</span>;</span><br><span class="line">  <span class="keyword">return</span> __linkproc__ LStrArrayClr((<span class="type">int</span>)&amp;v16, <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写的很多,中间是读取输入的Name和处理Name字符串前四个字符的字符(猜测)</p>
+<p>不过其实最后用到了一个<code>System::__linkproc__ LStrCmp</code>函数,字符串匹配函数嘛.<code>LStrCmp</code>函数的第二个参数就是我们输入的Serial,那么<code>v16</code>显而易见就是处理后的Name字符串,也就是程序处理过的Serial了</p>
+<p><img src="2.png" />
+跳转到<code>v16</code>的地址之后还需要把指向的数据转化成<code>DWORD</code>类型,之后就可以看到这是一个指向了字符串的地址,把这串字符串输入Serial,Name保持不变之后就成功通过了.</p>
+<p>那么查看另一个窗口,也是一样的道理 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __usercall Tserial_button1Click@&lt;eax&gt;(<span class="type">int</span> a1@&lt;eax&gt;, <span class="type">void</span> *a2@&lt;ebx&gt;)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> v3; <span class="comment">// ecx</span></span><br><span class="line">  <span class="type">char</span> v4; <span class="comment">// zf</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> v6; <span class="comment">// [esp-10h] [ebp-20h] BYREF</span></span><br><span class="line">  <span class="type">void</span> *v7; <span class="comment">// [esp-Ch] [ebp-1Ch]</span></span><br><span class="line">  <span class="type">int</span> *v8; <span class="comment">// [esp-8h] [ebp-18h]</span></span><br><span class="line">  <span class="type">void</span> *v9; <span class="comment">// [esp-4h] [ebp-14h]</span></span><br><span class="line">  <span class="type">char</span> *v10; <span class="comment">// [esp+0h] [ebp-10h] BYREF</span></span><br><span class="line">  <span class="type">int</span> *v11; <span class="comment">// [esp+4h] [ebp-Ch] BYREF</span></span><br><span class="line">  __int32 v12; <span class="comment">// [esp+8h] [ebp-8h] BYREF</span></span><br><span class="line">  __int32 v13; <span class="comment">// [esp+Ch] [ebp-4h] BYREF</span></span><br><span class="line">  <span class="type">int</span> savedregs; <span class="comment">// [esp+10h] [ebp+0h] BYREF</span></span><br><span class="line"></span><br><span class="line">  v11 = <span class="number">0</span>;</span><br><span class="line">  v10 = <span class="number">0</span>;</span><br><span class="line">  v9 = a2;</span><br><span class="line">  v8 = &amp;savedregs;</span><br><span class="line">  v7 = &amp;loc_42F52C;</span><br><span class="line">  v6 = __readfsdword(<span class="number">0</span>);</span><br><span class="line">  __writefsdword(<span class="number">0</span>, (<span class="type">unsigned</span> <span class="type">int</span>)&amp;v6);</span><br><span class="line">  __linkproc__ <span class="title function_">LStrLAsg</span><span class="params">(&amp;v13, (__int32)&amp;str_Hello[<span class="number">1</span>])</span>;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrLAsg</span><span class="params">(&amp;v12, (__int32)&amp;str_Dude_[<span class="number">1</span>])</span>;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrCatN</span><span class="params">(&amp;v11, <span class="number">3</span>, v3, v6, v13, &amp;TeeAxisIncr::_16393[<span class="number">1</span>], v12)</span>;</span><br><span class="line">  Controls::TControl::GetText(*(Controls::TControl **)(a1 + <span class="number">480</span>), &amp;v10);</span><br><span class="line">  System::__linkproc__ <span class="title function_">LStrCmp</span><span class="params">((<span class="type">unsigned</span> <span class="type">int</span>)v10, v11)</span>;</span><br><span class="line">  <span class="keyword">if</span> ( v4 )</span><br><span class="line">    TApplication::MessageBox(*off_430A48, <span class="string">&quot;God Job dude !! =)&quot;</span>, <span class="string">&quot;Congratz!&quot;</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    TApplication::MessageBox(*off_430A48, <span class="string">&quot;Try Again!!&quot;</span>, <span class="string">&quot;Failed!&quot;</span>, <span class="number">0</span>);</span><br><span class="line">  __writefsdword(<span class="number">0</span>, (<span class="type">unsigned</span> <span class="type">int</span>)v7);</span><br><span class="line">  v9 = &amp;loc_42F533;</span><br><span class="line">  __linkproc__ <span class="title function_">LStrClr</span><span class="params">(&amp;v10)</span>;</span><br><span class="line">  <span class="keyword">return</span> __linkproc__ LStrArrayClr((<span class="type">int</span>)&amp;v11, <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>得到Serial是<code>Hello Dude!</code></p>
 
     </article>
     <!-- license -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://example.com">Lansha</a>
-            <p>原文链接：<a href="http://example.com/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/">http://example.com/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/</a>
-            <p>发表日期：<a href="http://example.com/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/">August 15th 2024, 5:30:25 am</a>
-            <p>更新日期：<a href="http://example.com/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/">September 2nd 2024, 1:51:28 pm</a>
+            <p>原文链接：<a href="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/">http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/</a>
+            <p>发表日期：<a href="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/">August 27th 2024, 6:18:13 pm</a>
+            <p>更新日期：<a href="http://example.com/2024/08/27/CrackMe/Acid_burn/Acid_burn/">September 2nd 2024, 2:31:53 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -542,16 +530,16 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2024/08/27/CrackMe/Acid_burn/" title="CrackMe笔记--Acid_burn">
-                    <div class="nextTitle">CrackMe笔记--Acid_burn</div>
+                <a href="/2024/08/31/CrackMe/aLoNg3x.1/aLoNg3x.1/" title="CrackMe笔记--aLoNg3x.1">
+                    <div class="nextTitle">CrackMe笔记--aLoNg3x.1</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2024/08/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/16%20%E5%9F%BA%E5%9D%80%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/" title="逆向工程核心原理笔记 第16章 基址重定位表">
-                    <div class="prevTitle">逆向工程核心原理笔记 第16章 基址重定位表</div>
+                <a href="/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/" title="逆向工程核心原理笔记 第18章 UPack PE文件头分析">
+                    <div class="prevTitle">逆向工程核心原理笔记 第18章 UPack PE文件头分析</div>
                 </a>
             
         </li>
@@ -691,7 +679,7 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83pe%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">比较PE文件头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90upack%E7%9A%84pe%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">2.</span> <span class="toc-text">分析UPack的PE文件头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image_file_header.sizeofoptionalheader"><span class="toc-number">3.</span> <span class="toc-text">IMAGE_FILE_HEADER.SizeOfOptionalHeader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image_section_header"><span class="toc-number">4.</span> <span class="toc-text">IMAGE_SECTION_HEADER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%8F%A0%E8%8A%82%E5%8C%BA"><span class="toc-number">5.</span> <span class="toc-text">重叠节区</span></a></li></ol>
+                
             </div>
         
         <!-- sidebar -->
@@ -825,6 +813,14 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
     
     
     
@@ -842,51 +838,6 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
         
             
             
-            <div class="archive-year"> 2024 </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/27</span>
-            <a class="archive-post-title" href="/2024/08/27/CrackMe/Acid_burn/">CrackMe笔记--Acid_burn</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
-            <div class="archive-year"> Invalid date </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2024/08/31/CrackMe/aLoNg3x.1/">CrackMe笔记--aLoNg3x.1</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
-            <div class="archive-year"> Invalid date </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2024/09/02/CrackMe/aLoNg3x.2/">CrackMe笔记--aLoNg3x.2</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
             <div class="archive-year"> Invalid date </div>
             <ul class="year-list">
             
@@ -902,40 +853,13 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
                 
                 </ul>
             
-            <div class="archive-year"> Invalid date </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/13%20PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">逆向工程核心原理笔记 第13章 PE文件格式</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/">逆向工程核心原理笔记 第18章 UPack PE文件头分析</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/07</span>
             <a class="archive-post-title" href="/2024/08/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/16%20%E5%9F%BA%E5%9D%80%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/">逆向工程核心原理笔记 第16章 基址重定位表</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/19</span>
-            <a class="archive-post-title" href="/2024/07/19/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/15%20%E8%B0%83%E8%AF%95UPX%E5%8E%8B%E7%BC%A9%E7%9A%84%E7%A8%8B%E5%BA%8F/">逆向工程核心原理笔记 第14章 运行时压缩</a>
         </li>
     
         
@@ -1004,21 +928,92 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
             <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/8%20abex%20%60%20crackme%202/">逆向工程核心原理笔记 第8章 abex ` crackme 2</a>
         </li>
     
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2024/08/27/CrackMe/Acid_burn/Acid_burn/">CrackMe笔记--Acid_burn</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/08/31/CrackMe/aLoNg3x.1/aLoNg3x.1/">CrackMe笔记--aLoNg3x.1</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/09/02/CrackMe/aLoNg3x.2/aLoNg3x.2/">CrackMe笔记--aLoNg3x.2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/07/07/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/13/13%20PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">逆向工程核心原理笔记 第13章 PE文件格式</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2024/08/15/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/18/18%20UPack%20PE%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%86%E6%9E%90/">逆向工程核心原理笔记 第18章 UPack PE文件头分析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/19</span>
+            <a class="archive-post-title" href="/2024/07/19/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/15/15%20%E8%B0%83%E8%AF%95UPX%E5%8E%8B%E7%BC%A9%E7%9A%84%E7%A8%8B%E5%BA%8F/">逆向工程核心原理笔记 第14章 运行时压缩</a>
+        </li>
+    
     </div>
 </div>
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
-        
-            <span class="sidebar-tag-name" data-tags="CrackMe">
-                <span class="iconfont-archer">&#xe606;</span>
-                CrackMe
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Delphi">
-                <span class="iconfont-archer">&#xe606;</span>
-                Delphi
-            </span>
         
             <span class="sidebar-tag-name" data-tags="逆向工程核心原理">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1033,6 +1028,16 @@ id="image_file_header.sizeofoptionalheader">IMAGE_FILE_HEADER.SizeOfOptionalHead
             <span class="sidebar-tag-name" data-tags="PE">
                 <span class="iconfont-archer">&#xe606;</span>
                 PE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="CrackMe">
+                <span class="iconfont-archer">&#xe606;</span>
+                CrackMe
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Delphi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Delphi
             </span>
         
     </div>
